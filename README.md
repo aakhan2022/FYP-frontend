@@ -7,4 +7,4 @@ Simply open the terminal in 'Project' directory and run the following commands: 
 2 - npm run dev
 <br>
 
-#NOTE: MAKE SURE NODE.JS IS INSTALLED ON YOUR COMPUTER!!!
+# NOTE: MAKE SURE NODE.JS IS INSTALLED ON YOUR COMPUTER!!!
