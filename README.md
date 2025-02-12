@@ -4,6 +4,7 @@ This is FYP Frontend repo, will be updated accordingly as we move forward in dev
 # How to Run the App:
 Simply open the terminal in 'Project' directory and run the following commands: <br>
 1 - npm install <br>
+<b>(Note: If any errors after running 'npm install', simply run 'npm audit fix')</b><br>
 2 - npm run dev
 <br>
 
