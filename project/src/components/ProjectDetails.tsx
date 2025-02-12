@@ -223,7 +223,10 @@ export default function ProjectDetails() {
         <SecurityView onBack={() => setShowSecurityView(false)} />
       ) : (
         <>
-          
+          {/* Beta Notice */}
+          <div className="bg-[#1a2749] text-white p-4 rounded-lg">
+            Analytics is still in beta. We are working hard on improving it.
+          </div>
 
           {/* Code Quality Section */}
           <div>

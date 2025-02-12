@@ -4,49 +4,11 @@ import { Briefcase, GraduationCap, Github } from 'lucide-react';
 import Dashboard from './components/Dashboard';
 import AuthCallback from './components/AuthCallback';
 import ProjectDetails from './components/ProjectDetails';
-
-function LoginPage() {
-  const handleGithubLogin = () => {
-    // Simply redirect to callback which will then redirect to dashboard
-    window.location.href = '/callback';
-  };
-
-  return (
-    <div className="min-h-screen bg-[#1a1f2e] text-white p-8">
-      <div className="max-w-md mx-auto space-y-8">
-        <div className="flex items-center space-x-3">
-          <GraduationCap size={40} className="text-white" />
-          <h1 className="text-3xl font-bold">SkillScout</h1>
-        </div>
-        
-        <div className="space-y-4 mt-12">
-          <h2 className="text-4xl font-light leading-tight">
-            We help you focus on building great skills without the need to worry about job search
-          </h2>
-          
-          <h3 className="text-2xl mt-6 mb-8">Sign In</h3>
-          
-          <button 
-            onClick={handleGithubLogin}
-            className="w-full bg-[#2d3446] hover:bg-[#363d52] text-white p-3 rounded-lg flex items-center justify-center space-x-3 transition"
-          >
-            <Github size={20} />
-            <span>GITHUB</span>
-          </button>
-          
-          <p className="text-sm text-gray-400 text-center mt-6">
-            Don't have an account? <a href="#" className="text-white hover:underline">Sign Up</a>
-          </p>
-          
-          <p className="text-xs text-gray-500 text-center mt-4">
-            By signing in, you agree to the <a href="#" className="text-blue-400 hover:underline">Terms of Use</a> and{' '}
-            <a href="#" className="text-blue-400 hover:underline">Privacy Policy</a>
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-}
+import EmployerAuth from './components/EmployerAuth';
+import EmployerDashboard from './components/EmployerDashboard';
+import CandidateProfile from './components/CandidateProfile';
+import CandidateAuth from './components/CandidateAuth';
+import ConnectGithub from './components/ConnectGithub';
 
 function LandingPage({ onRoleSelect }: { onRoleSelect: (role: 'candidate' | 'employer') => void }) {
   return (
@@ -93,17 +55,20 @@ function App() {
           path="/" 
           element={
             currentView === 'landing' ? (
-              <LandingPage onRoleSelect={setCurrentView} />
+              <LandingPage onRoleSelect={(role) => setCurrentView(role)} />
             ) : currentView === 'candidate' ? (
-              <LoginPage />
+              <CandidateAuth />
             ) : (
-              <div>Employer page coming soon...</div>
+              <EmployerAuth />
             )
           } 
         />
         <Route path="/callback" element={<AuthCallback />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/connect-github" element={<ConnectGithub />} />
+        <Route path="/emp-dashboard" element={<EmployerDashboard />} />
         <Route path="/project/:projectId" element={<ProjectDetails />} />
+        <Route path="/candidate/:candidateId" element={<CandidateProfile />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
